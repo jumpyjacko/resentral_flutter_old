@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 
 import 'package:resentral_flutter/pages/timetable_colours.dart';
@@ -15,13 +16,13 @@ class Timetable extends StatefulWidget {
 
 class _TimetableState extends State<Timetable> {
   var client = http.Client();
-
+  
   Future<DTimetable>? _dtimetable;
 
   @override
   void initState() {
     setState(() {
-      _dtimetable = getFromRemote(PLACEHOLDER);
+      _dtimetable = getFromRemote(username, password);
     });
 
     super.initState();
@@ -48,6 +49,7 @@ class _TimetableState extends State<Timetable> {
               SizedBox(
                 height: 148,
                 child: Card(
+                  color: Theme.of(context).colorScheme.background,
                   elevation: 8,
                   margin: const EdgeInsets.fromLTRB(6, 16, 6, 0),
                   shape: RoundedRectangleBorder(
@@ -65,16 +67,21 @@ class _TimetableState extends State<Timetable> {
                         title: Text(
                           response[i].responseClass + ", " + response[i].period,
                           style: const TextStyle(
-                              fontSize: 21, fontWeight: FontWeight.w600),
+                              fontSize: 21,
+                              fontWeight: FontWeight.w600,
+                              color: Color.fromARGB(255, 200, 200, 200)),
                         ),
                         subtitle: Text(
-                            response[i].room +
-                                "\n" +
-                                response[i].teacher +
-                                "\n\n" +
-                                "time",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w400)),
+                          response[i].room +
+                              "\n" +
+                              response[i].teacher +
+                              "\n\n" +
+                              "time",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromARGB(255, 200, 200, 200)),
+                        ),
                       )
                     ],
                   ),
