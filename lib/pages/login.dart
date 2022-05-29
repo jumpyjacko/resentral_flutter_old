@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,8 +22,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 600));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 600));
     fontAnimation = Tween<double>(begin: 36.0, end: 24.0).animate(
         CurvedAnimation(
             parent: controller, curve: Curves.easeInOutCubicEmphasized));
@@ -47,16 +45,14 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
             Text(titleText,
                 style: TextStyle(fontSize: smallFontAnimation.value)),
             Text("reSentral", style: TextStyle(fontSize: fontAnimation.value)),
-            buttonText == "Log In" ? LoginCard() : Container(),
+            buttonText == "Log In" ? const LoginCard() : Container(),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 47, 0, 35),
               child: ElevatedButton(
                 onPressed: () {
                   if (buttonText == "Log In" &&
                       _LoginCardState.userController.text != "" &&
-                      _LoginCardState.passController.text != "") {
-                        
-                      }
+                      _LoginCardState.passController.text != "") {}
                   setState(() {
                     buttonText = "Log In";
                     titleText = "Log in to";
@@ -64,7 +60,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                   controller.forward();
                 },
                 style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(Size(286.0, 62.0)),
+                    fixedSize:
+                        MaterialStateProperty.all(const Size(286.0, 62.0)),
                     elevation: MaterialStateProperty.all(4.0),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 24)),
@@ -131,8 +128,8 @@ class _LoginCardState extends State<LoginCard>
     super.initState();
     userController = TextEditingController();
     passController = TextEditingController();
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 600));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 600));
     sizeAnimation = Tween<double>(begin: 0.0, end: 232.0).animate(
         CurvedAnimation(
             parent: controller, curve: Curves.easeInOutCubicEmphasized));
@@ -165,12 +162,12 @@ class _LoginCardState extends State<LoginCard>
                   controller: userController,
                   maxLines: 1,
                   autocorrect: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Username",
                       labelStyle: TextStyle(fontSize: 16)),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 260,
                 child: TextField(
                   controller: passController,
@@ -179,7 +176,7 @@ class _LoginCardState extends State<LoginCard>
                   obscureText: !_passwordVisible,
                   decoration: InputDecoration(
                     labelText: "Password",
-                    labelStyle: TextStyle(fontSize: 16),
+                    labelStyle: const TextStyle(fontSize: 16),
                     suffixIcon: IconButton(
                       icon: Icon(_passwordVisible
                           ? Icons.visibility

@@ -16,12 +16,18 @@ class Timetable extends StatefulWidget {
 
 class _TimetableState extends State<Timetable> {
   var client = http.Client();
-  
+
   Future<DTimetable>? _dtimetable;
+
+  // REMINDER: Remove these credentials before commit
+  String username = PLACEHOLDER;
+  String password = PLACEHOLDER;
 
   @override
   void initState() {
     setState(() {
+      // TODO: change getFromRemote to exec on launch, not page open
+      // NOTE: will instead do a check for whether data is empty
       _dtimetable = getFromRemote(username, password);
     });
 
@@ -55,7 +61,7 @@ class _TimetableState extends State<Timetable> {
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
                       color: getColours(response[i].subject),
-                      width: 5,
+                      width: 2,
                     ),
                     borderRadius: BorderRadius.circular(5),
                   ),
@@ -69,7 +75,7 @@ class _TimetableState extends State<Timetable> {
                           style: const TextStyle(
                               fontSize: 21,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromARGB(255, 200, 200, 200)),
+                              color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         subtitle: Text(
                           response[i].room +

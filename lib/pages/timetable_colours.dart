@@ -24,7 +24,7 @@ Color getColours(String subj) {
     case "Multimedia":
     case "Timber":
       {
-        return Colors.blue.shade600;
+        return Colors.indigo.shade600;
       } // Blue
     case "Chemistry":
     case "Biology":
