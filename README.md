@@ -1,4 +1,6 @@
 # reSentral Flutter
+# THIS PROJECT IS NO LONGER BEING WORKED ON BECAUSE I DON'T HAVE A SERVER HOST
+##### also I have yearlies and the HSC coming up
 
 A rewrite of my initial [reSentral React (+Cordova)](https://github.com/JumpyJacko/resentral-react-cordova) mobile app which aims to be faster and have more features due to writing with Flutter.
 
